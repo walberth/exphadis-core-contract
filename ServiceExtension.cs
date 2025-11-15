@@ -7,10 +7,12 @@ using System.Reflection;
 
 public static class ServiceExtensions
 {
-    public static void AddContractsDependency(this IServiceCollection services)
+    public static IServiceCollection AddContractsDependency(this IServiceCollection services)
     {
         services.AddMapper();
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        return services;
     }
 
     private static void AddMapper(this IServiceCollection services)
