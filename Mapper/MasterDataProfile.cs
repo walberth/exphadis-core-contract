@@ -230,7 +230,7 @@ public class MasterDataProfile : Profile
             .ForMember(dest => dest.GradeIds, opt => opt.MapFrom(src => $"{src.GradeIds.ToList().ConvertToIntListString()}"))
             .ForMember(dest => dest.Media, opt => opt.Ignore());
 
-        this.CreateMap<LogDto, Log>()
+        this.CreateMap<LogDto, Core.Domain.MasterDataAggregates.Log>()
             ?.ForMember(dest => dest.Id, opt => opt.Ignore())
             ?.ForMember(dest => dest.Message, opt => opt.MapFrom(src => src.Message))
             ?.ForMember(dest => dest.MessageTemplate, opt => opt.Ignore())
