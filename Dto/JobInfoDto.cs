@@ -1,8 +1,10 @@
 // Copyright (c) {year} Exphadis. All rights reserved.
 
-namespace Exphadis.Core.Application.Dto
-{
-    public sealed record JobInfoDto(
+#nullable enable
+
+namespace Exphadis.Core.Contract.Dto;
+
+public sealed record JobInfoDto(
     string id,
     string? name,
     JobStatusEnum status,
@@ -10,4 +12,5 @@ namespace Exphadis.Core.Application.Dto
     DateTimeOffset? startedAt = null,
     DateTimeOffset? finishedAt = null,
     string? error = null);
-}
+
+#nullable restore

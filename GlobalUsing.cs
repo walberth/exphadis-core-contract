@@ -7,7 +7,6 @@ global using System.Runtime.CompilerServices;
 global using System.Runtime.Serialization;
 global using AutoMapper;
 global using FluentValidation;
-global using Exphadis.Core.Contract.Dto.Base;
 global using System.IO;
 global using Exphadis.Core.Contract.Dto;
 global using Exphadis.Core.Contract.Dto.Base;
