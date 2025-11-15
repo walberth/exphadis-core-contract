@@ -1,0 +1,43 @@
+// Copyright (c) {year} Exphadis. All rights reserved.
+
+global using System;
+global using System.ComponentModel.DataAnnotations;
+global using System.Data;
+global using System.Runtime.CompilerServices;
+global using System.Runtime.Serialization;
+global using AutoMapper;
+global using FluentValidation;
+global using Exphadis.Core.Contract.Dto.Base;
+global using System.IO;
+global using Exphadis.Core.Contract.Dto;
+global using Exphadis.Core.Contract.Dto.Base;
+global using Exphadis.Core.Contract.Enums;
+global using Exphadis.Core.Contract.Exceptions;
+global using Exphadis.Core.Contract.Mapper;
+global using Exphadis.Core.Contract.Validator;
+global using Exphadis.Core.Domain;
+global using Exphadis.Core.Domain.Base;
+global using Exphadis.Core.Domain.CourseAggregates;
+global using Exphadis.Core.Domain.EmailAggregates;
+global using Exphadis.Core.Domain.EnrollmentAggregates;
+global using Exphadis.Core.Domain.GradeAggregates;
+global using Exphadis.Core.Domain.InformationAggregates;
+global using Exphadis.Core.Domain.MasterDataAggregates;
+global using Exphadis.Core.Domain.MediaAggregates;
+global using Exphadis.Core.Domain.NotificationAggregates;
+global using Exphadis.Core.Domain.PaymentAggregates;
+global using Exphadis.Core.Domain.PersonAggregates;
+global using Exphadis.Core.Domain.PsychologyAggregates;
+global using Exphadis.Core.Domain.SecurityAggregates;
+global using Exphadis.Core.Domain.StudentAggregates;
+global using Exphadis.Core.Domain.TutorshipAggregates;
+global using Exphadis.Core.Domain.UserAggregates;
+global using Exphadis.Core.Domain.WebAggregates;
+global using Exphadis.Core.Domain.WorkerAggregates;
+global using Exphadis.Core.Domain.WorkshopAggregates;
+global using System.Collections.Generic;
+global using Microsoft.Extensions.Logging;
+global using Walberth.Helper;
+global using Walberth.Helper.Util;
+global using System.Linq;
+

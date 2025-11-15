@@ -1,1 +1,106 @@
+name: Publish to NuGet
 
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: read
+
+concurrency:
+    group: nuget-publish-${{ github.ref }}
+    cancel-in-progress: true
+
+env:
+    PROJECT_FILE: Exphadis.Core.Contract.csproj
+    NUGET_SOURCE: https://api.nuget.org/v3/index.json
+
+jobs:
+    publish:
+        name: Build, Pack and Publish (OIDC)
+        runs-on: ubuntu-latest
+        environment: production
+        permissions:
+            id-token: write # Needed for OIDC token to exchange with nuget.org
+            contents: read
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup .NET SDK
+              uses: actions/setup-dotnet@v4
+              with:
+                  dotnet-version: |
+                      8.0.x
+                      7.0.x
+                  cache: true
+                  cache-dependency-path: |
+                      **/global.json
+                      **/*.csproj
+                      **/nuget.config
+
+            - name: Restore
+              run: dotnet restore "./${{ env.PROJECT_FILE }}"
+
+            - name: Build (Release)
+              run: dotnet build "./${{ env.PROJECT_FILE }}" -c Release --no-restore
+
+            - name: Compute version from run number (stable X.Y.Z)
+              shell: bash
+              run: |
+                  set -euo pipefail
+                  git fetch --tags --force
+                  BASE_RAW=$(git describe --tags --abbrev=0 --match "*.*.*" 2>/dev/null || echo "0.0.0")
+                  BASE=${BASE_RAW#v}
+                  # Validar base; si no es semver puro, usar 0.0.0
+                  if ! echo "$BASE" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+                      BASE="0.0.0"
+                  fi
+                  IFS='.' read -r MA MI_BASE PATCH_BASE <<< "$BASE"
+                  # Nueva lógica: grupos de 10 (patch 0..9). Cada 10 ejecuciones aumenta MINOR y PATCH se reinicia a 0.
+                  RN=${GITHUB_RUN_NUMBER}
+                  ADD_MINOR=$(( RN / 10 ))
+                  NEW_MINOR=$(( MI_BASE + ADD_MINOR ))
+                  NEW_PATCH=$(( RN % 10 ))
+                  PKG_VERSION="$MA.$NEW_MINOR.$NEW_PATCH"
+                  echo "Base tag: $BASE_RAW -> normalizado: $MA.$MI_BASE.$PATCH_BASE"
+                  echo "Run number: $RN => minor +$ADD_MINOR (resultado $NEW_MINOR), patch $NEW_PATCH"
+                  echo "PKG_VERSION=$PKG_VERSION" >> $GITHUB_ENV
+
+            - name: Validate resolved version (stable X.Y.Z)
+              shell: bash
+              run: |
+                  if [ -z "${PKG_VERSION:-}" ]; then
+                    echo "PKG_VERSION is empty. Version resolution failed." >&2
+                    exit 1
+                  fi
+                  if ! echo "$PKG_VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+                    echo "Version must be X.Y.Z. Current: $PKG_VERSION" >&2
+                    exit 1
+                  fi
+                  echo "Resolved package version: ${PKG_VERSION}"
+
+            - name: Pack (explicit version)
+              shell: bash
+              run: |
+                  dotnet pack "./${{ env.PROJECT_FILE }}" -c Release --no-build -o ./nupkg \
+                    /p:ContinuousIntegrationBuild=true \
+                    /p:PackageVersion=$PKG_VERSION \
+                    /p:DebugType=embedded
+
+            - name: NuGet login (OIDC → temp API key)
+              uses: NuGet/login@v1
+              id: login
+              with:
+                  user: wgutierrez
+
+            - name: Push package (.nupkg)
+              run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source $NUGET_SOURCE --skip-duplicate
+
+            - name: Summary
+              run: |
+                  echo "Publicación completada con Trusted Publishing (OIDC)." >> $GITHUB_STEP_SUMMARY
+                  echo "Si falla la autenticación, revisa la política en nuget.org: Repository Owner, Repository, Workflow file." >> $GITHUB_STEP_SUMMARY

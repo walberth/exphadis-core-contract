@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../../walberth-helper/Walberth.Helper.csproj" />
+  <Project Path="../exphadis-core-domain/Exphadis.Core.Domain.csproj" />
+  <Project Path="Exphadis.Core.Contract.csproj" />
+</Solution>
