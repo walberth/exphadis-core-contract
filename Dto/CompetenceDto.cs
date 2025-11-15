@@ -30,7 +30,7 @@ public class CompetenceDto : AuditDto
 
     public QualificationDto FinalQualification { get; set; }
 
-    public List<QualificationDto> Notes { get; set; } = new ();
+    public List<QualificationDto> Notes { get; set; } = new();
 }
 
 public class CompetenceSelectedDto : AuditDto

@@ -18,5 +18,5 @@ public class MenuDto
 
     public int NumberOfChildrens { get; set; }
 
-    public List<MenuDto> Childrens { get; set; } = new ();
+    public List<MenuDto> Childrens { get; set; } = new();
 }

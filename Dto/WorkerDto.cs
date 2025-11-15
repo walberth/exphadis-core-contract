@@ -58,6 +58,6 @@ public class WorkerDto : AuditDto
 
     public string RoleNames =>
         this.Person.User != null && this.Person.User.RoleList.Any()
-            ? string.Join(", ", this.Person.User?.RoleList.Select(x => x.Name).ToList() !)
+            ? string.Join(", ", this.Person.User?.RoleList.Select(x => x.Name).ToList()!)
             : null;
 }

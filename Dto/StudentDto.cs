@@ -287,7 +287,7 @@ public class StudentQualificationDto
 
     public IEnumerable<AbilityGradeDto> AbilityGrades { get; set; } = new HashSet<AbilityGradeDto>();
 
-    public UnityGradeDto UnityGrade { get; set; } = new ();
+    public UnityGradeDto UnityGrade { get; set; } = new();
 }
 
 public class StudentAdditionalQualificationDto

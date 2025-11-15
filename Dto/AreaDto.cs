@@ -18,11 +18,11 @@ public class AreaDto : AuditDto
 
     public bool Exonerated { get; set; }
 
-    public List<CompetenceDto> Competences { get; set; } = new ();
+    public List<CompetenceDto> Competences { get; set; } = new();
 
     public IEnumerable<CourseDto> Courses { get; set; } = new HashSet<CourseDto>();
 
-    public List<QualificationDto> LastNotesByPeriod { get; set; } = new ();
+    public List<QualificationDto> LastNotesByPeriod { get; set; } = new();
 
     public string FinalNote => this.ObtainFinalNote();
 

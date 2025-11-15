@@ -38,7 +38,7 @@ public class WorkerAssistanceCsvDto
 {
     public int AssistanceId { get; set; }
 
-    public List<AssistanceCsvDto> AssistanceList = new ();
+    public List<AssistanceCsvDto> AssistanceList = new();
 }
 
 public class AssistanceCsvDto

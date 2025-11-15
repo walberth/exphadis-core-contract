@@ -24,7 +24,7 @@ public class UserDto : AuditDto
 
     public string RoleNames =>
         this.RoleList.Any()
-            ? string.Join(", ", this.RoleList.Select(x => x.Name).ToList() !)
+            ? string.Join(", ", this.RoleList.Select(x => x.Name).ToList()!)
             : null;
 }
 

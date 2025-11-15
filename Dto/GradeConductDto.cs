@@ -12,7 +12,7 @@ public class StudentConductQualificationDto
 
     public int Year { get; set; }
 
-    public List<QualificationDto> Notes { get; set; } = new ();
+    public List<QualificationDto> Notes { get; set; } = new();
 
     public GenericGradeDto Qualification { get; set; }
 

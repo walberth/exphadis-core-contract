@@ -7,7 +7,7 @@ public class StudentValidator : AbstractValidator<StudentDto>
         {
             this.When(x => x.Person != null, () =>
             {
-                this.RuleFor(a => a.Person).SetValidator(new PersonValidator() !, "Create");
+                this.RuleFor(a => a.Person).SetValidator(new PersonValidator()!, "Create");
             });
 
             this.When(x => x.Person is { Direction: { } }, () =>
