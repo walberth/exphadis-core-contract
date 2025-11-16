@@ -9,4 +9,7 @@ public enum QueueEnum
 
     [EnumMember(Value = "https://sqs.us-east-1.amazonaws.com/062610911578/QueueExphadisInformProgress")]
     InformProgress = 1,
+
+    [EnumMember(Value = "https://sqs.us-east-1.amazonaws.com/062610911578/QueueExphadisPreProceeding")]
+    PreProceeding = 2
 }
