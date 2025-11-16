@@ -11,11 +11,11 @@ permissions:
 concurrency:
   group: nuget-publish-${{ github.ref }}
   cancel-in-progress: true
-  SLACK_URL: ${{ vars.SLACK_DEVOPS_URL }}
 
 env:
   PROJECT_FILE: Exphadis.Core.Contract.csproj
   NUGET_SOURCE: https://api.nuget.org/v3/index.json
+  SLACK_URL: ${{ vars.SLACK_DEVOPS_URL }}
 
 jobs:
   publish:
