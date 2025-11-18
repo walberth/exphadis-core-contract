@@ -11,7 +11,6 @@ global using System.IO;
 global using Exphadis.Core.Contract.Dto;
 global using Exphadis.Core.Contract.Dto.Base;
 global using Exphadis.Core.Contract.Enums;
-global using Exphadis.Core.Contract.Exceptions;
 global using Exphadis.Core.Contract.Mapper;
 global using Exphadis.Core.Contract.Validator;
 global using Exphadis.Core.Domain;
