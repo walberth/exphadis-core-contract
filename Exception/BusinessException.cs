@@ -1,49 +1,31 @@
 ﻿namespace Exphadis.Core.Contract.Exception
 {
+    [Serializable]
     public class BusinessException : System.Exception
     {
-        public string ValidationMessage { get; set; }
-
+        public string ValidationMessage { get; }
         public ExceptionTypeEnum Type { get; }
-
-        public byte[] ByteArray { get; set; }
+        public byte[] ByteArray { get; }
 
         public BusinessException(
             string validationMessage,
-            ILogger logger,
             ExceptionTypeEnum type = ExceptionTypeEnum.Default,
-            string fileContent = default,
+            string fileContent = null,
             [CallerLineNumber] int lineNumber = 0,
             [CallerMemberName] string memberName = "",
-            [CallerFilePath] string filePath = "")
-            : base(validationMessage)
+            [CallerFilePath] string filePath = "") : base(validationMessage)
         {
-            this.ValidationMessage = validationMessage;
+            ValidationMessage = validationMessage;
+            Type = type;
 
-            var exceptionMessage = string.IsNullOrEmpty(validationMessage) ? fileContent : validationMessage;
-
-            var message = $"[{Constant.Username}] {Constant.TraceIdentifier} - [MemberName: {memberName}]{Environment.NewLine}[Line: {lineNumber}]{Environment.NewLine}[Path: {filePath}]{Environment.NewLine}[Validation: {exceptionMessage}]";
-
-            logger.LogWarning(message);
-
-            this.Type = type;
-
-            if (fileContent != default)
+            if (!string.IsNullOrEmpty(fileContent))
             {
-                this.ByteArray = System.Text.Encoding.UTF8.GetBytes(fileContent);
+                ByteArray = System.Text.Encoding.UTF8.GetBytes(fileContent);
             }
-        }
 
-        public BusinessException()
-        {
-        }
-
-        public BusinessException(string message) : base(message)
-        {
-        }
-
-        public BusinessException(string message, System.Exception innerException) : base(message, innerException)
-        {
+            Data["LineNumber"] = lineNumber;
+            Data["MemberName"] = memberName;
+            Data["FilePath"] = filePath;
         }
     }
 }

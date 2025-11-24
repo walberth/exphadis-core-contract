@@ -159,7 +159,7 @@ public class WorkerProfile : Profile
             ?.ForMember(dest => dest.FileName, opt => opt.MapFrom(src => src.FileName))
             ?.ForMember(dest => dest.MonthName, opt => opt.MapFrom(src => src.MonthName))
             ?.ForMember(dest => dest.ContractType, opt => opt.MapFrom(src => $"{src.Contract.ContractType}"))
-            ?.ForMember(dest => dest.Url, opt => opt.MapFrom(src => $"{Constant.UrlValidate}/api/worker/download/{src.Identifier}/ticket"))
+            ?.ForMember(dest => dest.Url, opt => opt.MapFrom(src => $"{Constant.BasePathExphadisApi}/api/worker/download/{src.Identifier}/ticket"))
             ?.ForMember(dest => dest.Month, opt => opt.MapFrom(src => src.Month))
             ?.ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Year))
             ?.ForMember(dest => dest.UserUploaded, opt => opt.MapFrom(src => src.UserUploaded))
