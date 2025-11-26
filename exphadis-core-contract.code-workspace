@@ -1,29 +1,31 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"workbench.colorCustomizations": {
-			"activityBar.activeBackground": "#47807c",
-			"activityBar.background": "#47807c",
-			"activityBar.foreground": "#e7e7e7",
-			"activityBar.inactiveForeground": "#e7e7e799",
-			"activityBarBadge.background": "#633967",
-			"activityBarBadge.foreground": "#e7e7e7",
-			"commandCenter.border": "#e7e7e799",
-			"sash.hoverBorder": "#47807c",
-			"statusBar.background": "#355f5c",
-			"statusBar.foreground": "#e7e7e7",
-			"statusBarItem.hoverBackground": "#47807c",
-			"statusBarItem.remoteBackground": "#355f5c",
-			"statusBarItem.remoteForeground": "#e7e7e7",
-			"titleBar.activeBackground": "#355f5c",
-			"titleBar.activeForeground": "#e7e7e7",
-			"titleBar.inactiveBackground": "#355f5c99",
-			"titleBar.inactiveForeground": "#e7e7e799"
-		},
-		"peacock.color": "#355f5c"
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "github.copilot.chat.generateCommitMessage.template": "refactor: ${summaryEs}\n\n${detailsEs}",
+    "github.copilot.chat.generateCommitMessage.systemPrompt": "Eres un generador de mensajes de commit para Git en español. SIEMPRE responde únicamente en español. Genera mensajes siguiendo Conventional Commits e incluye SIEMPRE el tipo en minúsculas (por ejemplo: refactor, fix o feat), seguido de dos puntos y un resumen detallado en español de lo que cambia el commit. No intentes que el mensaje sea corto: prioriza describir claramente los cambios relevantes (qué se modificó y para qué), aunque la línea sea larga. El formato final debe ser: 'tipo: resumen detallado en español'. No agregues cuerpo ni líneas adicionales.",
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#47807c",
+      "activityBar.background": "#47807c",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#633967",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#47807c",
+      "statusBar.background": "#355f5c",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#47807c",
+      "statusBarItem.remoteBackground": "#355f5c",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#355f5c",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#355f5c99",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#355f5c"
+  }
 }
