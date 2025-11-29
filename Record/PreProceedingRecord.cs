@@ -4,5 +4,6 @@
         int year,
         int periodId,
         string email,
-        DateTime timeStamp);
+        DateTime timeStamp,
+        bool enableLogging = false);
 }

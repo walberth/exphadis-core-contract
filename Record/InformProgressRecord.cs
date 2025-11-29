@@ -9,8 +9,9 @@
         int year,
         MediaTypeEnum mediaType,
         DateTime timeStamp,
-        string EmailTo,
-        string EmailCc,
-        string Subject
+        string emailTo,
+        string emailCc,
+        string subject,
+        bool enableLogging = false
     );
 }
