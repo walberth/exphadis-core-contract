@@ -1,0 +1,104 @@
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+* text=auto eol=crlf
+*.cs diff=csharp
+
+###############################################################################
+# Set the merge driver for project and solution files
+#
+# Merging from the command prompt will add diff markers to the files if there
+# are conflicts (Merging from VS is not affected by the settings below, in VS
+# the diff markers are never inserted). Diff markers may cause the following
+# file extensions to fail to load in VS. An alternative would be to treat
+# these files as binary and thus will always conflict and require user
+# intervention with every merge. To do so, just comment the entries below and
+# uncomment the group further below
+###############################################################################
+*.sln        text eol=crlf
+*.csproj     text eol=crlf
+*.vbproj     text eol=crlf
+*.vcxproj    text eol=crlf
+*.vcproj     text eol=crlf
+*.dbproj     text eol=crlf
+*.fsproj     text eol=crlf
+*.lsproj     text eol=crlf
+*.wixproj    text eol=crlf
+*.modelproj  text eol=crlf
+*.sqlproj    text eol=crlf
+*.wmaproj    text eol=crlf
+*.xproj      text eol=crlf
+*.props      text eol=crlf
+*.filters    text eol=crlf
+*.vcxitems   text eol=crlf
+*.gitattributes text
+*.editorconfig  text
+*.md 		 text
+*.yml 		 text
+*.yaml 		 text
+*.json 		 text
+*.xml 		 text
+*.config 	 text
+*.csproj 	 text
+*.props 	 text
+*.targets 	 text
+*.sln 		 text
+
+# C# source: ensure it's treated as text (LF in repo)
+*.cs 		 text
+
+# Scripts
+*.sh 		 text eol=lf
+*.ps1 		 text eol=crlf
+*.psm1 		 text eol=crlf
+*.psd1 		 text eol=crlf
+
+# SQL
+*.sql 		 text
+
+###############################################################################
+# behavior for image files
+#
+# image files are treated as binary by default.
+###############################################################################
+*.png 		 binary
+*.jpg 		 binary
+*.jpeg 		 binary
+*.gif 		 binary
+*.ico 		 binary
+*.woff 		 binary
+*.woff2 	 binary
+*.eot 		 binary
+*.ttf 		 binary
+*.otf 		 binary
+*.dll 		 binary
+*.exe 		 binary
+*.pdb 		 binary
+*.zip 		 binary
+*.nupkg 	 binary
+
+# ----- Optional: enforce UTF-8 working tree encoding for key source files -----
+# (only if some contributors have editors that might save with BOM or different encodings)
+*.cs     	 working-tree-encoding=UTF-8
+*.csproj 	 working-tree-encoding=UTF-8
+*.sln    	 working-tree-encoding=UTF-8
+*.json   	 working-tree-encoding=UTF-8
+*.xml    	 working-tree-encoding=UTF-8
+
+###############################################################################
+# diff behavior for common document formats
+#
+# Convert binary document formats to text before diffing them. This feature
+# is only available from the command line. Turn it on by uncommenting the
+# entries below.
+###############################################################################
+*.doc   diff=astextplain
+*.DOC   diff=astextplain
+*.docx  diff=astextplain
+*.DOCX  diff=astextplain
+*.dot   diff=astextplain
+*.DOT   diff=astextplain
+*.pdf   diff=astextplain
+*.PDF   diff=astextplain
+*.rtf   diff=astextplain
+*.RTF   diff=astextplain
