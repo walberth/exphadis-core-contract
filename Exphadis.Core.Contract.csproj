@@ -18,8 +18,8 @@
 
   <!-- En Debug (local): ProjectReference -->
   <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-      <ProjectReference Include="C:\Users\walbe\Development\PERSONAL\walberth-helper\Walberth.Helper.csproj" />
-      <ProjectReference Include="C:\Users\walbe\Development\PERSONAL\EXPHADIS\exphadis-core-domain\Exphadis.Core.Domain.csproj" />
+      <ProjectReference Include="X:\PERSONAL\walberth-helper\Walberth.Helper.csproj" />
+      <ProjectReference Include="X:\PERSONAL\EXPHADIS\exphadis-core-domain\Exphadis.Core.Domain.csproj" />
   </ItemGroup>
 
   <!-- En Release (producción): PackageReference -->
