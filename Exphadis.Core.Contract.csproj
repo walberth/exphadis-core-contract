@@ -24,8 +24,8 @@
 
   <!-- En Release (producción): PackageReference -->
   <ItemGroup Condition="'$(Configuration)' == 'Release'">
-      <PackageReference Include="Walberth.Helper" Version="0.*" />
-      <PackageReference Include="Exphadis.Core.Domain" Version="0.*" />
+      <PackageReference Include="Walberth.Helper" Version="*" />
+      <PackageReference Include="Exphadis.Core.Domain" Version="*" />
   </ItemGroup>
 
 </Project>

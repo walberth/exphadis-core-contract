@@ -54,24 +54,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --tags --force
-          BASE_RAW=$(git describe --tags --abbrev=0 --match "*.*.*" 2>/dev/null || echo "0.0.0")
-          BASE=${BASE_RAW#v}
-          # Validar base; si no es semver puro, usar 0.0.0
-          if ! echo "$BASE" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
-              BASE="0.0.0"
+
+          RN="${GITHUB_RUN_NUMBER:-0}"
+          if ! echo "$RN" | grep -Eq '^[0-9]+$'; then
+            echo "GITHUB_RUN_NUMBER is not numeric: $RN" >&2
+            exit 1
           fi
-          IFS='.' read -r MA MI_BASE PATCH_BASE <<< "$BASE"
-          # Nueva lógica: grupos de 10 (patch 0..9). Cada 10 ejecuciones aumenta MINOR y PATCH se reinicia a 0.
-          RN=${GITHUB_RUN_NUMBER}
-          ADD_MINOR=$(( RN / 10 ))
-          NEW_MINOR=$(( MI_BASE + ADD_MINOR ))
-          NEW_PATCH=$(( RN % 10 ))
-          PKG_VERSION="$MA.$NEW_MINOR.$NEW_PATCH"
-          echo "Base tag: $BASE_RAW -> normalizado: $MA.$MI_BASE.$PATCH_BASE"
-          echo "Run number: $RN => minor +$ADD_MINOR (resultado $NEW_MINOR), patch $NEW_PATCH"
+
+          # RN=38  => 0.3.8
+          # RN=175 => 1.7.5
+          MAJOR=$(( RN / 100 ))
+          MINOR=$(( (RN / 10) % 10 ))
+          PATCH=$(( RN % 10 ))
+
+          PKG_VERSION="$MAJOR.$MINOR.$PATCH"
+
+          echo "Run number: $RN => major $MAJOR, minor $MINOR, patch $PATCH"
           echo "PKG_VERSION=$PKG_VERSION" >> $GITHUB_ENV
           echo "pkg_version=$PKG_VERSION" >> $GITHUB_OUTPUT
+          echo "Resolved app version: $PKG_VERSION"
 
       - name: Validate resolved version (stable X.Y.Z)
         shell: bash
