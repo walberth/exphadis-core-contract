@@ -21,4 +21,7 @@ public enum BucketEnum
 
     [EnumMember(Value = "wg-html-templates")]
     HtmlTemplates = 5,
+
+    [EnumMember(Value = "exphadis-old-inform-progress")]
+    OldInformProgress = 6,
 }

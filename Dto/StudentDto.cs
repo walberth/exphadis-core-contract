@@ -31,6 +31,8 @@ public class StudentEnrollmentDto
 
     public string CompleteName { get; set; }
 
+    public string Document { get; set; }
+
     public int IdLevel { get; set; }
 
     public string Level { get; set; }
