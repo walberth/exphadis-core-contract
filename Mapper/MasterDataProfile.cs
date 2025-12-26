@@ -230,20 +230,6 @@ public class MasterDataProfile : Profile
             .ForMember(dest => dest.GradeIds, opt => opt.MapFrom(src => $"{src.GradeIds.ToList().ConvertToIntListString()}"))
             .ForMember(dest => dest.Media, opt => opt.Ignore());
 
-        this.CreateMap<LogDto, Core.Domain.MasterDataAggregates.Log>()
-            ?.ForMember(dest => dest.Id, opt => opt.Ignore())
-            ?.ForMember(dest => dest.Message, opt => opt.MapFrom(src => src.Message))
-            ?.ForMember(dest => dest.MessageTemplate, opt => opt.Ignore())
-            ?.ForMember(dest => dest.Level, opt => opt.MapFrom(src => $"{src.Level.GetEnumMemberValue()}"))
-            ?.ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(src => src.TimeStamp))
-            ?.ForMember(dest => dest.Exception, opt => opt.MapFrom(src => src.Stack))
-            ?.ForMember(dest => dest.Properties, opt => opt.Ignore())
-            ?.ForMember(dest => dest.TraceIdentifier, opt => opt.MapFrom(src => $"{src.TraceIdentifier.ToString()}"))
-            ?.ForMember(dest => dest.QueryString, opt => opt.Ignore())
-            ?.ForMember(dest => dest.RequestBody, opt => opt.Ignore())
-            ?.ForMember(dest => dest.RouteParams, opt => opt.Ignore())
-            ?.ForMember(dest => dest.AppName, opt => opt.MapFrom(src => src.AppName));
-
         this.CreateMap<SupplierDto, Supplier>()
             ?.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             ?.ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))

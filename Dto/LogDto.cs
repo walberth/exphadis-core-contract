@@ -12,5 +12,11 @@ public class LogDto
 
     public Guid TraceIdentifier { get; set; }
 
-    public string AppName { get; set; }
+    public string Username { get; set; }
+
+    public string Service { get; set; }
+
+    public string Version { get; set; }
+
+    public string Environment { get; set; }
 }
