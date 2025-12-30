@@ -12,7 +12,11 @@ public class LogDto
 
     public Guid TraceIdentifier { get; set; }
 
+    public string Identifier { get; set; }
+
     public string Username { get; set; }
+
+    public string CompleteName { get; set; }
 
     public string Service { get; set; }
 
