@@ -59,19 +59,19 @@ public class LoginDto : AuditDto
 
 public class UserLoginDto
 {
-    // [Required(ErrorMessage = "Es necesario indicar el usuario")]
+    [Required(ErrorMessage = "Es necesario indicar el usuario")]
     public string Username { get; set; }
 
-    // [Required(ErrorMessage = "Es necesario indicar la contraseña")]
+    [Required(ErrorMessage = "Es necesario indicar la contraseña")]
     public string Password { get; set; }
 
     public string Email { get; set; }
 
     public string CompleteName { get; set; }
 
-    public string Ip { get; set; }
+    public string Location { get; set; }
 
-    public string ApplicationClient { get; set; }
+    public Guid AppClientId { get; set; }
 
     public string Key { get; set; }
 }
