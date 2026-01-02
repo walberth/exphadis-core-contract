@@ -65,13 +65,18 @@ public class UserLoginDto
     [Required(ErrorMessage = "Es necesario indicar la contraseña")]
     public string Password { get; set; }
 
-    public string Email { get; set; }
-
-    public string CompleteName { get; set; }
-
     public string Location { get; set; }
 
-    public Guid AppClientId { get; set; }
+    //public Guid AppClientId { get; set; }
+    //public string Key { get; set; }
+}
 
-    public string Key { get; set; }
+public class LoginThirdPartyDto
+{
+    [Required(ErrorMessage = "Es necesario indicar el email")]
+    [EmailAddress(ErrorMessage = "El email no tiene un formato válido")]
+    public string Email { get; set; }
+
+    [Required(ErrorMessage = "Es necesario indicar el nombre")]
+    public string CompleteName { get; set; }
 }
