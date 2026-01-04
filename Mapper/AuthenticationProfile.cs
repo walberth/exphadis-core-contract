@@ -18,8 +18,7 @@ public class AuthenticationProfile : Profile
             ?.ReverseMap();
 
         this.CreateMap<Session, SessionDto>()
-            ?.ForMember(dest => dest.IdUser, opt => opt?.MapFrom(src => src.IdUser))
-            ?.ForMember(dest => dest.IdSession, opt => opt?.MapFrom(src => src.Token ?? string.Empty))
+            ?.ForMember(dest => dest.UserId, opt => opt?.MapFrom(src => src.UserId))
             ?.ForMember(dest => dest.ExpirationHours, opt => opt?.MapFrom(src => src.TimeToRelease ?? string.Empty))
             ?.ForMember(dest => dest.SessionExpirationTime, opt => opt?.MapFrom(src => src.ExpirationTime))
             ?.ReverseMap();

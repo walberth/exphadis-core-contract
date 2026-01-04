@@ -66,9 +66,6 @@ public class UserLoginDto
     public string Password { get; set; }
 
     public string Location { get; set; }
-
-    //public Guid AppClientId { get; set; }
-    //public string Key { get; set; }
 }
 
 public class LoginThirdPartyDto
