@@ -102,6 +102,11 @@ public class AssistanceDetailDto : AuditDto
     public int JustificationId { get; set; }
 
     public int JustificationTypeId { get; set; }
+
+    // NUEVO: datos para mostrar el ajuste aplicado
+    public string DelayComparisonBaseTime { get; set; }
+
+    public int? DelayMinutesDiscount { get; set; }
 }
 
 public class AssistanceJustificationDto : AuditDto
@@ -117,4 +122,14 @@ public class AssistanceJustificationDto : AuditDto
     public int WorkerJustifyingId { get; set; }
 
     public AssistanceJustificationTypeEnum JustificationTypeId { get; set; }
+
+    // NUEVO:
+    // - Cuando el tipo sea LessDelayMinutes, el front puede mandar cuántos minutos descontar.
+    // - Debe ser >= 1.
+    public int? DelayMinutesDiscount { get; set; }
+
+    // NUEVO:
+    // - Hora base contra la que se compara el ingreso (formato "HH:mm").
+    // - Si no se envía, se usa la configuración AdmissionTime.
+    public string DelayComparisonBaseTime { get; set; }
 }
