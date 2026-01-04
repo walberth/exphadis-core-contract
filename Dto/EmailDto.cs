@@ -40,6 +40,10 @@ public class AttachmentDto
     public string FileAsString { get; set; }
 
     public string Extension { get; set; }
+
+    public int Month { get; set; }
+
+    public int Year { get; set; }
 }
 
 public class EmailLinkDto
