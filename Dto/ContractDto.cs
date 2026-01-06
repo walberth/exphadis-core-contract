@@ -24,12 +24,6 @@ public class ContractDto : AuditDto
 
     public bool? HaveKids { get; set; }
 
-    public bool IsFullYear { get; set; }
-
-    public int? StartMonth { get; set; }
-
-    public int? EndMonth { get; set; }
-
     public int? MediaId { get; set; }
 
     public int WorkerId { get; set; }
