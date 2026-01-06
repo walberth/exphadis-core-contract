@@ -16,11 +16,19 @@ public class ContractDto : AuditDto
 
     public ContributionTypeEnum ContributionType { get; set; }
 
+    public AfpTypeEnum AfpType { get; set; }
+
     public EssaludTypeEnum EssaludType { get; set; }
 
     public string EssaludSisCode { get; set; }
 
     public bool? HaveKids { get; set; }
+
+    public bool IsFullYear { get; set; }
+
+    public int? StartMonth { get; set; }
+
+    public int? EndMonth { get; set; }
 
     public int? MediaId { get; set; }
 
@@ -59,6 +67,8 @@ public class ContractDto : AuditDto
     public string ContributionTypeName => this.ContributionType.GetEnumMemberValue();
 
     public string ContractTypeName => this.ContractType.GetEnumMemberValue();
+
+    public string AfpTypeName => this.AfpType.GetEnumMemberValue();
 
     public string EssaludTypeName => this.EssaludType.GetEnumMemberValue();
 
