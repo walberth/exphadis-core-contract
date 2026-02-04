@@ -23,4 +23,6 @@ public class LogDto
     public string Version { get; set; }
 
     public string Environment { get; set; }
+
+    public string SentryUserId { get; set; }
 }
