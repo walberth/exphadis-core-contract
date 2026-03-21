@@ -60,3 +60,29 @@ public class EnrollmentDto : AuditDto
 
     public List<AreaNoteDto> AreaNotes { get; set; } = new List<AreaNoteDto>();
 }
+
+public sealed class EnrollmentGoogleWorkspaceBackfillResultDto
+{
+    public int Year { get; set; }
+
+    public int TotalStudents { get; set; }
+
+    public int SuccessfulCount { get; set; }
+
+    public int FailedCount { get; set; }
+
+    public List<EnrollmentGoogleWorkspaceBackfillErrorDto> Errors { get; set; } = new List<EnrollmentGoogleWorkspaceBackfillErrorDto>();
+}
+
+public sealed class EnrollmentGoogleWorkspaceBackfillErrorDto
+{
+    public int EnrollmentId { get; set; }
+
+    public int StudentId { get; set; }
+
+    public string StudentName { get; set; }
+
+    public string Email { get; set; }
+
+    public string Message { get; set; }
+}
