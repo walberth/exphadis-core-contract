@@ -329,6 +329,10 @@ public class InvoicePaymentDto
 
     public string FileName { get; set; }
 
+    public string CsvData { get; set; }
+
+    public string CsvFileName { get; set; }
+
     [Required]
     public string UserUploaded { get; set; }
 
