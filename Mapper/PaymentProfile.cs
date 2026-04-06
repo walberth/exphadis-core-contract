@@ -132,7 +132,12 @@ public class PaymentProfile : Profile
             ?.ReverseMap();
 
         this.CreateMap<IncomeAndExpensesDto, IncomeAndExpenses>()
-            ?.ReverseMap();
+            ?.ForMember(dest => dest.IdMoneyMovementType, opt => opt?.MapFrom(src => (int)src.IncomeMoneyMovementTypeEnum))
+            ?.ForMember(dest => dest.IdExtorno, opt => opt?.MapFrom(src => src.IdReturn));
+
+        this.CreateMap<IncomeAndExpenses, IncomeAndExpensesDto>()
+            ?.ForMember(dest => dest.IncomeMoneyMovementTypeEnum, opt => opt?.MapFrom(src => (MoneyMovementTypeEnum)src.IdMoneyMovementType))
+            ?.ForMember(dest => dest.IdReturn, opt => opt?.MapFrom(src => src.IdExtorno ?? 0));
 
         this.CreateMap<StudentPayment, StudentPaymentDto>()
             ?.ForMember(dest => dest.Id, opt => opt?.MapFrom(src => src.Id))
