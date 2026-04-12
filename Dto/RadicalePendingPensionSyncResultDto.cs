@@ -20,6 +20,8 @@ public class RadicalePendingPensionSyncResultDto
 
     public int DebtorAttorneys { get; set; }
 
+    public int PendingPaymentsWithCommitment { get; set; }
+
     public int ContactsUpserted { get; set; }
 
     public int ContactsDeleted { get; set; }
