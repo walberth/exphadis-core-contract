@@ -24,4 +24,7 @@ public enum BucketEnum
 
     [EnumMember(Value = "exphadis-old-inform-progress")]
     OldInformProgress = 6,
+
+    [EnumMember(Value = "exphadis-public-images")]
+    PublicImages = 7,
 }

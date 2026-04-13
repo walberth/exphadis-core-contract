@@ -18,4 +18,7 @@ public enum EmailTemplateEnum
 
     [EnumMember(Value = "exphadis-report-in-email.html")]
     ReportToEmail = 5,
+
+    [EnumMember(Value = "exphadis-report-tutorship-pending-collect.html")]
+    ReportTutorshipPendingCollect = 6,
 }
