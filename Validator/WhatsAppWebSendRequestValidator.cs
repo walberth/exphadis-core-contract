@@ -23,5 +23,10 @@ public class WhatsAppWebSendRequestValidator : AbstractValidator<WhatsAppWebSend
         this.RuleFor(x => x.Type)
             .NotEmpty()
             .WithMessage("El tipo de mensaje es obligatorio");
+
+        this.RuleFor(x => x.ImageUrl)
+            .Matches(@"^https?://.+")
+            .When(x => !string.IsNullOrWhiteSpace(x.ImageUrl))
+            .WithMessage("La URL de la imagen debe ser una URL válida (http o https)");
     }
 }

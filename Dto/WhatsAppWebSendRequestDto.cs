@@ -7,5 +7,7 @@ namespace Exphadis.Core.Contract.Dto
         public string Type { get; set; } = "text";
 
         public string Text { get; set; } = null!;
+
+        public string? ImageUrl { get; set; }
     }
 }
