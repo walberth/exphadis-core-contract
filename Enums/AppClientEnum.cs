@@ -19,5 +19,8 @@
 
         [EnumMember(Value = "06924f05-f14d-4d25-adab-87b0c9c3ca5a")]
         DevopsAutomation = 5,
+
+        [EnumMember(Value = "9fd2c977-66be-4349-be15-1cd8d8a5ccfc")]
+        BaileysWhatsappAutomation = 6,
     }
 }
