@@ -22,5 +22,8 @@
 
         [EnumMember(Value = "9fd2c977-66be-4349-be15-1cd8d8a5ccfc")]
         BaileysWhatsappAutomation = 6,
+
+        [EnumMember(Value = "c8840af3-dc58-414d-8ddf-a6879a87f8ae")]
+        GoogleSheets = 7,
     }
 }
