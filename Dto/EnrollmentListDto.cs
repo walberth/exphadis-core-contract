@@ -73,4 +73,6 @@ public class EnrollmentListDto
     public DateTime? DateRetire { get; set; }
 
     public string TotalSubjects { get; set; }
+
+    public string Email { get; set; }
 }

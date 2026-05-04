@@ -44,6 +44,7 @@ public class EnrollmentProfile : Profile
             ?.ForMember(dest => dest.PensionAmountByStudent, opt => opt.MapFrom(src => src.PensionAmountByStudent))
             ?.ForMember(dest => dest.PensionAmountByStudentForPresentation, opt => opt.Ignore())
             ?.ForMember(dest => dest.DateRetire, opt => opt.MapFrom(src => src.DateRetire))
-            ?.ForMember(dest => dest.TotalSubjects, opt => opt.Ignore());
+            ?.ForMember(dest => dest.TotalSubjects, opt => opt.Ignore())
+            ?.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
     }
 }
