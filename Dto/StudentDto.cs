@@ -161,6 +161,42 @@ public class StudentNormalPaymentDto
     public StudentPaymentDto StudentPayment { get; set; }
 }
 
+public sealed class StudentInstitutionalEmailResultDto
+{
+    public int StudentId { get; set; }
+
+    public string FullName { get; set; }
+
+    public string Dni { get; set; }
+
+    public string Email { get; set; }
+
+    public bool CreatedInGoogle { get; set; }
+
+    public bool SavedInDatabase { get; set; }
+
+    public bool PasswordInitializedWithDni { get; set; }
+
+    public bool ForcePasswordChange { get; set; }
+
+    public string Message { get; set; }
+}
+
+public sealed class StudentInstitutionalEmailPasswordResetResultDto
+{
+    public int StudentId { get; set; }
+
+    public string Email { get; set; }
+
+    public bool PasswordReset { get; set; }
+
+    public bool PasswordInitializedWithDni { get; set; }
+
+    public bool ForcePasswordChange { get; set; }
+
+    public string Message { get; set; }
+}
+
 public class StudentPaymentDto : AuditDto
 {
     public int Id { get; set; }
