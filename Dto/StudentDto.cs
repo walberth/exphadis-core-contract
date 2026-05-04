@@ -171,6 +171,8 @@ public sealed class StudentInstitutionalEmailResultDto
 
     public string Email { get; set; }
 
+    public string Password { get; set; }
+
     public bool CreatedInGoogle { get; set; }
 
     public bool SavedInDatabase { get; set; }
@@ -187,6 +189,8 @@ public sealed class StudentInstitutionalEmailPasswordResetResultDto
     public int StudentId { get; set; }
 
     public string Email { get; set; }
+
+    public string Password { get; set; }
 
     public bool PasswordReset { get; set; }
 
