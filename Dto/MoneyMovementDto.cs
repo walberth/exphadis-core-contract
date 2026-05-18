@@ -60,4 +60,10 @@ public class MoneyMovementReportDto
     public decimal Arrear { get; set; }
 
     public string Invoice { get; set; }
+
+    public int StudentPaymentId { get; set; }
+
+    public int IncomeAndExpenseId { get; set; }
+
+    public int? BankPaymentId { get; set; } = null;
 }

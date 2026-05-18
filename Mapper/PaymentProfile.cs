@@ -82,7 +82,10 @@ public class PaymentProfile : Profile
             ?.ForMember(dest => dest.HaveInvoice, opt => opt?.MapFrom(src => src.HaveInvoice))
             ?.ForMember(dest => dest.BankType, opt => opt?.MapFrom(src => src.BankType))
             ?.ForMember(dest => dest.Comment, opt => opt?.MapFrom(src => src.Comment))
-            ?.ForMember(dest => dest.Invoice, opt => opt?.MapFrom(src => src.Invoice));
+            ?.ForMember(dest => dest.Invoice, opt => opt?.MapFrom(src => src.Invoice))
+            ?.ForMember(dest => dest.StudentPaymentId, opt => opt?.MapFrom(src => src.IdStudentPayment))
+            ?.ForMember(dest => dest.IncomeAndExpenseId, opt => opt?.MapFrom(src => src.IncomeAndExpenseId))
+                ?.ForMember(dest => dest.BankPaymentId, opt => opt?.MapFrom(src => src.IdBankPayment == 0 ? (int?)null : src.IdBankPayment));
 
         this.CreateMap<StudentPaymentPlan, StudentPaymentPlanDto>()
             ?.ForMember(dest => dest.Id, opt => opt?.MapFrom(src => src.Id))
