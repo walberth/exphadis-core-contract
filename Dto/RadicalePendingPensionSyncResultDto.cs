@@ -22,6 +22,10 @@ public class RadicalePendingPensionSyncResultDto
 
     public int PendingPaymentsWithCommitment { get; set; }
 
+    public int PendingPaymentsWithActiveCommitment { get; set; }
+
+    public int PendingPaymentsWithExpiredCommitment { get; set; }
+
     public int ContactsUpserted { get; set; }
 
     public int ContactsDeleted { get; set; }
