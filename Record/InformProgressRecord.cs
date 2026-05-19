@@ -12,6 +12,7 @@
         string emailTo,
         string emailCc,
         string subject,
+        string username,
         bool enableLogging = false
     );
 }
