@@ -27,6 +27,7 @@ public class TutorshipProfile : Profile
             ?.ForMember(dest => dest.IdTutorship, opt => opt.MapFrom(src => src.IdTutorship))
             ?.ForMember(dest => dest.IdEnrollment, opt => opt.MapFrom(src => src.IdEnrollment))
             ?.ForMember(dest => dest.IdTutorshipMessageType, opt => opt.MapFrom(src => $"{(int)src.Type}"))
+            ?.ForMember(dest => dest.IdUnity, opt => opt.Ignore())
             ?.ForMember(dest => dest.Message, opt => opt.MapFrom(src => src.Message))
             ?.ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Year))
             ?.ForMember(dest => dest.Student, opt => opt.Ignore())
