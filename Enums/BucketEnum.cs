@@ -27,4 +27,7 @@ public enum BucketEnum
 
     [EnumMember(Value = "exphadis-public-images")]
     PublicImages = 7,
+
+    [EnumMember(Value = "whastapp-stickers")]
+    WhatsAppStickers = 8,
 }

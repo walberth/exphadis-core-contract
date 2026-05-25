@@ -2,7 +2,7 @@ namespace Exphadis.Core.Contract.Validator;
 
 public class WhatsAppWebSendRequestValidator : AbstractValidator<WhatsAppWebSendRequestDto>
 {
-    private static readonly string[] AllowedTypes = { "text", "image", "document" };
+    private static readonly string[] AllowedTypes = { "text", "image", "document", "sticker" };
 
     public WhatsAppWebSendRequestValidator()
     {
@@ -18,7 +18,7 @@ public class WhatsAppWebSendRequestValidator : AbstractValidator<WhatsAppWebSend
             .NotEmpty()
             .WithMessage("El tipo de mensaje es obligatorio")
             .Must(t => AllowedTypes.Contains(t, StringComparer.OrdinalIgnoreCase))
-            .WithMessage("El tipo debe ser: text, image o document");
+            .WithMessage("El tipo debe ser: text, image, document o sticker");
 
         this.RuleFor(x => x.Text)
             .Cascade(CascadeMode.Stop)
@@ -36,7 +36,8 @@ public class WhatsAppWebSendRequestValidator : AbstractValidator<WhatsAppWebSend
             .Matches(@"^https?://.+")
             .WithMessage("La URL debe ser válida (http o https)")
             .When(x => string.Equals(x.Type, "image", StringComparison.OrdinalIgnoreCase)
-                     || string.Equals(x.Type, "document", StringComparison.OrdinalIgnoreCase));
+                     || string.Equals(x.Type, "document", StringComparison.OrdinalIgnoreCase)
+                     || string.Equals(x.Type, "sticker", StringComparison.OrdinalIgnoreCase));
 
         this.RuleFor(x => x.Caption)
             .MaximumLength(1024)
