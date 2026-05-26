@@ -25,4 +25,10 @@ public class AnnouncementDto : AuditDto
     public int LevelId { get; set; }
 
     public IEnumerable<int> GradeIds { get; set; }
+
+    public AnnouncementDeliveryChannelEnum DeliveryChannel { get; set; } = AnnouncementDeliveryChannelEnum.Intranet;
+
+    public AnnouncementWhatsappPayloadDto? WhatsappPayload { get; set; }
+
+    public WhatsappDispatchStatusResponseDto? WhatsappDispatch { get; set; }
 }

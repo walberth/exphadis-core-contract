@@ -10,10 +10,9 @@ public class AnnouncementWhatsappPayloadValidator : AbstractValidator<Announceme
             .IsInEnum()
             .WithMessage("messageType debe ser uno de: 1 (TEXT), 2 (STICKER), 3 (TEXT_AND_STICKER), 4 (IMAGE), 5 (TEXT_AND_IMAGE)");
 
-        this.RuleFor(x => x.RecipientIds)
-            .NotNull()
-            .NotEmpty()
-            .WithMessage("Se requiere al menos un destinatario en recipientIds");
+        this.RuleFor(x => x)
+            .Must(HasRecipients)
+            .WithMessage("Se requiere al menos un destinatario en recipientIds o recipientRefs");
 
         this.RuleFor(x => x.Text)
             .NotEmpty()
@@ -38,4 +37,8 @@ public class AnnouncementWhatsappPayloadValidator : AbstractValidator<Announceme
             .When(x => x.MessageType is WhatsappMessageTypeEnum.Image
                                      or WhatsappMessageTypeEnum.TextAndImage);
     }
+
+    private static bool HasRecipients(AnnouncementWhatsappPayloadDto payload) =>
+        (payload.RecipientIds?.Any(id => !string.IsNullOrWhiteSpace(id)) ?? false)
+        || (payload.RecipientRefs?.Any(id => !string.IsNullOrWhiteSpace(id)) ?? false);
 }
