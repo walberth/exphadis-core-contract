@@ -11,5 +11,8 @@ public enum QueueEnum
     InformProgress = 1,
 
     [EnumMember(Value = "https://sqs.us-east-1.amazonaws.com/062610911578/QueueExphadisPreProceeding")]
-    PreProceeding = 2
+    PreProceeding = 2,
+
+    [EnumMember(Value = "https://sqs.us-east-1.amazonaws.com/062610911578/QueueWhatsappMessage")]
+    WhatsappMessage = 3
 }
