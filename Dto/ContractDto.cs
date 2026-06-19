@@ -14,6 +14,10 @@ public class ContractDto : AuditDto
 
     public DateTime? PeriodicityEnd { get; set; }
 
+    // Hora de ingreso especifica del contrato (formato "HH:mm").
+    // Si es nula, el calculo de tardanzas usa el valor global de configuracion (AdmissionTime).
+    public string AdmissionTime { get; set; }
+
     public ContributionTypeEnum ContributionType { get; set; }
 
     public AfpTypeEnum AfpType { get; set; }
