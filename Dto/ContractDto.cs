@@ -18,6 +18,10 @@ public class ContractDto : AuditDto
     // Si es nula, el calculo de tardanzas usa el valor global de configuracion (AdmissionTime).
     public string AdmissionTime { get; set; }
 
+    // Dias de la semana en que el trabajador debe asistir (p.ej. ["lunes", "martes", ...]).
+    // Si viene vacio/nulo, la API normaliza al default de dias utiles (lunes a viernes).
+    public IEnumerable<string> WeekDays { get; set; }
+
     public ContributionTypeEnum ContributionType { get; set; }
 
     public AfpTypeEnum AfpType { get; set; }
