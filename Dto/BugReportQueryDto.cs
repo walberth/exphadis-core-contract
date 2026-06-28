@@ -17,52 +17,75 @@ public sealed class BugReportFilterDto
 
 public sealed class BugReportListResponseDto
 {
-    public List<BugReportItemDto> Items { get; set; } = new();
-
     public int TotalCount { get; set; }
+
+    public int TotalWithScreenshot { get; set; }
+
+    public int TotalWithHttpErrors { get; set; }
+
+    public List<BugReportItemDto> Items { get; set; } = new();
 }
 
 public sealed class BugReportItemDto
 {
     public int Id { get; set; }
 
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
-    public string ScreenshotUrl { get; set; }
+    public string? ScreenshotUrl { get; set; }
 
+    public string CreatedAt { get; set; } = string.Empty;
+
+    public BugReportUserResponseDto User { get; set; } = new();
+
+    public BugReportContextResponseDto Context { get; set; } = new();
+
+    public List<BugReportHttpTraceResponseDto> HttpTrace { get; set; } = new();
+}
+
+public sealed class BugReportUserResponseDto
+{
     public int UserId { get; set; }
 
-    public string UserName { get; set; }
+    public string CompleteName { get; set; } = string.Empty;
 
-    public string UserEmail { get; set; }
+    public string Email { get; set; } = string.Empty;
 
-    public string Roles { get; set; }
+    public List<int> Roles { get; set; } = new();
+}
 
-    public string Url { get; set; }
+public sealed class BugReportContextResponseDto
+{
+    public string Url { get; set; } = string.Empty;
 
-    public string Path { get; set; }
+    public string Path { get; set; } = string.Empty;
 
-    public string QueryParams { get; set; }
+    public string QueryParams { get; set; } = string.Empty;
 
-    public string UserAgent { get; set; }
+    public string UserAgent { get; set; } = string.Empty;
 
-    public DateTime OccurredAt { get; set; }
+    public string Timestamp { get; set; } = string.Empty;
 
-    public string ScreenResolution { get; set; }
+    public string ScreenResolution { get; set; } = string.Empty;
 
-    public string ComponentName { get; set; }
+    public string? ComponentName { get; set; }
+}
 
-    public int TraceCount { get; set; }
+public sealed class BugReportHttpTraceResponseDto
+{
+    public string Id { get; set; } = string.Empty;
 
-    public int ErrorsInTrace { get; set; }
+    public string Method { get; set; } = string.Empty;
 
-    public int? LastErrorStatus { get; set; }
+    public string Url { get; set; } = string.Empty;
 
-    public string LastErrorUrl { get; set; }
+    public int? Status { get; set; }
 
-    public string HttpTrace { get; set; }
+    public long? DurationMs { get; set; }
 
-    public bool HasScreenshot { get; set; }
+    public string Timestamp { get; set; } = string.Empty;
 
-    public DateTime TimeRegister { get; set; }
+    public bool IsError { get; set; }
+
+    public string? ErrorMessage { get; set; }
 }
