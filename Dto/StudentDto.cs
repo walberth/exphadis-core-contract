@@ -235,7 +235,7 @@ public class StudentPaymentDto : AuditDto
 
     public bool ShouldBeTaken { get; set; }
 
-    public DateTime PaymentDate { get; set; }
+    public DateTime? PaymentDate { get; set; }
 
     public string Correlative { get; set; }
 
