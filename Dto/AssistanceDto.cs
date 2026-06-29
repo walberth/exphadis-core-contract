@@ -71,6 +71,8 @@ public class AssistanceSummaryDto : AuditDto
     public int WorkerAssistanceSummaryId { get; set; }
 
     public bool JustifyAllowed { get; set; }
+
+    public string FileUrl { get; set; }
 }
 
 public class AssistanceDetailDto : AuditDto
@@ -124,12 +126,12 @@ public class AssistanceJustificationDto : AuditDto
     public AssistanceJustificationTypeEnum JustificationTypeId { get; set; }
 
     // NUEVO:
-    // - Cuando el tipo sea LessDelayMinutes, el front puede mandar cuántos minutos descontar.
+    // - Cuando el tipo sea LessDelayMinutes, el front puede mandar cuï¿½ntos minutos descontar.
     // - Debe ser >= 1.
     public int? DelayMinutesDiscount { get; set; }
 
     // NUEVO:
     // - Hora base contra la que se compara el ingreso (formato "HH:mm").
-    // - Si no se envía, se usa la configuración AdmissionTime.
+    // - Si no se envï¿½a, se usa la configuraciï¿½n AdmissionTime.
     public string DelayComparisonBaseTime { get; set; }
 }
