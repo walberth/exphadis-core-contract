@@ -88,4 +88,8 @@ public sealed class BugReportHttpTraceResponseDto
     public bool IsError { get; set; }
 
     public string? ErrorMessage { get; set; }
+
+    public string? RequestBody { get; set; }
+
+    public string? ResponseBody { get; set; }
 }
