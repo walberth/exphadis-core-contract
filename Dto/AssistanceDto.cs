@@ -71,8 +71,13 @@ public class AssistanceSummaryDto : AuditDto
     public int WorkerAssistanceSummaryId { get; set; }
 
     public bool JustifyAllowed { get; set; }
+}
 
+public class AssistanceSummaryResultDto
+{
     public string FileUrl { get; set; }
+
+    public IEnumerable<AssistanceSummaryDto> Items { get; set; }
 }
 
 public class AssistanceDetailDto : AuditDto
