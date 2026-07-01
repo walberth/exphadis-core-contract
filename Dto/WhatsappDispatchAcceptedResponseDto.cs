@@ -14,6 +14,10 @@ namespace Exphadis.Core.Contract.Dto
 
         public int? NotificationId { get; set; }
 
+        public DateTime? ScheduledFrom { get; set; }
+
+        public DateTime? ScheduledTo { get; set; }
+
         /// <summary>
         /// Recipients that were successfully added to the batch (valid phone + pending status).
         /// </summary>

@@ -96,6 +96,12 @@ public sealed class WhatsappMessagesMonitoringBatchRowDto
 
     public DateTime AcceptedAt { get; set; }
 
+    public DateTime? ScheduledFrom { get; set; }
+
+    public DateTime? ScheduledTo { get; set; }
+
+    public DateTime? ActivatedAt { get; set; }
+
     public DateTime? StartedAt { get; set; }
 
     public DateTime? FinishedAt { get; set; }

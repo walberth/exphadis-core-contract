@@ -36,9 +36,32 @@ public class AnnouncementWhatsappPayloadValidator : AbstractValidator<Announceme
             .WithMessage("imageUrl debe ser una URL http o https válida")
             .When(x => x.MessageType is WhatsappMessageTypeEnum.Image
                                      or WhatsappMessageTypeEnum.TextAndImage);
+
+        this.RuleFor(x => x.ScheduledFrom)
+            .NotEmpty()
+            .WithMessage("scheduledFrom es obligatorio cuando se especifica scheduledTo")
+            .When(x => x.ScheduledTo.HasValue && !x.ScheduledFrom.HasValue);
+
+        this.RuleFor(x => x.ScheduledFrom)
+            .Must(from => from!.Value > DateTime.UtcNow)
+            .WithMessage("scheduledFrom debe ser una fecha/hora futura (en UTC)")
+            .When(x => x.ScheduledFrom.HasValue);
+
+        this.RuleFor(x => x.ScheduledTo)
+            .GreaterThan(x => x.ScheduledFrom!.Value)
+            .WithMessage("scheduledTo debe ser posterior a scheduledFrom")
+            .When(x => x.ScheduledFrom.HasValue && x.ScheduledTo.HasValue);
+
+        this.RuleFor(x => x)
+            .Must(HaveMinimumSchedulingWindow)
+            .WithMessage("La ventana entre scheduledFrom y scheduledTo debe ser de al menos 5 minutos")
+            .When(x => x.ScheduledFrom.HasValue && x.ScheduledTo.HasValue);
     }
 
     private static bool HasRecipients(AnnouncementWhatsappPayloadDto payload) =>
         (payload.RecipientIds?.Any(id => !string.IsNullOrWhiteSpace(id)) ?? false)
         || (payload.RecipientRefs?.Any(id => !string.IsNullOrWhiteSpace(id)) ?? false);
+
+    private static bool HaveMinimumSchedulingWindow(AnnouncementWhatsappPayloadDto payload) =>
+        (payload.ScheduledTo!.Value - payload.ScheduledFrom!.Value) >= TimeSpan.FromMinutes(5);
 }
