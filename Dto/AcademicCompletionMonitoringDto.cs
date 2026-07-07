@@ -39,6 +39,22 @@ public abstract class AcademicCompletionRowDto
 
     public string StudentName { get; set; }
 
+    public int? LevelId { get; set; }
+
+    public string LevelName { get; set; }
+
+    public int? GradeId { get; set; }
+
+    public string GradeName { get; set; }
+
+    public int? SectionId { get; set; }
+
+    public string SectionName { get; set; }
+
+    public int? TurnId { get; set; }
+
+    public string TurnName { get; set; }
+
     public int Year { get; set; }
 
     public int? UnityId { get; set; }
@@ -82,6 +98,22 @@ public sealed class AcademicCompletionSummaryRowDto
 
     public string StudentName { get; set; }
 
+    public int? LevelId { get; set; }
+
+    public string LevelName { get; set; }
+
+    public int? GradeId { get; set; }
+
+    public string GradeName { get; set; }
+
+    public int? SectionId { get; set; }
+
+    public string SectionName { get; set; }
+
+    public int? TurnId { get; set; }
+
+    public string TurnName { get; set; }
+
     public AcademicCompletionStatusEnum CognitiveStatus { get; set; }
 
     public string CognitiveStatusMessage { get; set; }
@@ -122,6 +154,22 @@ public sealed class AcademicCompletionDetailDto
     public int EnrollmentId { get; set; }
 
     public string StudentName { get; set; }
+
+    public int? LevelId { get; set; }
+
+    public string LevelName { get; set; }
+
+    public int? GradeId { get; set; }
+
+    public string GradeName { get; set; }
+
+    public int? SectionId { get; set; }
+
+    public string SectionName { get; set; }
+
+    public int? TurnId { get; set; }
+
+    public string TurnName { get; set; }
 
     public int Year { get; set; }
 
