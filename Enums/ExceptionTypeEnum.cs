@@ -9,4 +9,7 @@ public enum ExceptionTypeEnum
 
     [EnumMember(Value = "DownloadFile")]
     DownloadFile = 3,
+
+    [EnumMember(Value = "Forbidden")]
+    Forbidden = 4,
 }
