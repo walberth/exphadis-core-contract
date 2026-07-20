@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+node -e "const fs=require('fs');const p=process.argv[1];let t=fs.readFileSync(p,'utf8');t=t.replace(/^\uFEFF/, '');t=t.replace(/^([A-Za-z]+)(\([^)]*\))?(\!?)\s*:/, (m,typ,scope,bang)=>typ.toLowerCase()+(scope||'')+(bang||'')+':');fs.writeFileSync(p,t);" "$1"
+
+npx --no -- commitlint --edit "$1"

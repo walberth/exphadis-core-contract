@@ -43,8 +43,8 @@ jobs:
             **/*.csproj
             **/nuget.config
 
-      - name: Restore (Release)
-        run: dotnet restore "./${{ env.PROJECT_FILE }}" -p:Configuration=Release
+      - name: Restore (Release, refresh floating)
+        run: dotnet restore "./${{ env.PROJECT_FILE }}" -p:Configuration=Release --no-cache -p:RestoreForce=true
 
       - name: Build (Release)
         run: dotnet build "./${{ env.PROJECT_FILE }}" -c Release --no-restore

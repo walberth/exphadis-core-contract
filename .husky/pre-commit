@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+PROJECT_FILE="Exphadis.Core.Contract.csproj"
+
+echo "dotnet build (Debug, referencias locales)"
+dotnet build "$PROJECT_FILE" -c Debug -clp:ErrorsOnly || {
+  echo "Build Debug fallo.";
+  exit 1;
+}
+
+echo "Validando dependencias NuGet de produccion (Release, sin cache)"
+dotnet restore "$PROJECT_FILE" -p:Configuration=Release --no-cache -p:RestoreForce=true -clp:ErrorsOnly || {
+  echo "Restore Release fallo. Revisa que Walberth.Helper y Exphadis.Core.Domain ya esten publicados en NuGet.";
+  exit 1;
+}
+
+echo "dotnet build (Release, valida paquetes NuGet)"
+dotnet build "$PROJECT_FILE" -c Release --no-restore -clp:ErrorsOnly || {
+  echo "Build Release fallo. Las dependencias NuGet existen, pero pueden no ser compatibles con este contrato.";
+  exit 1;
+}
+
+echo "pre-commit OK"
